@@ -61,7 +61,7 @@ export const deleteLibrary = async (req: AuthenticatedRequest, res: Response, ne
     if (!libro) {
       return res.status(404).json({ ok: false, mensaje: "Libro no encontrado" });
     }
-    return res.status(200).json({ ok: true, mensaje: "Libro eliminado" });
+    return res.status(204).json({ ok: true, mensaje: "Libro eliminado" });
   } catch (error) {
     next(error);
   }

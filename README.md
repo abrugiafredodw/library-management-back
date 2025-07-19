@@ -52,6 +52,12 @@ library-management-back/
    ```
 3. Configura la conexión a MongoDB en `src/config/mongo-db-config.ts`.
    - Puedes usar variables de entorno para el URI de MongoDB.
+4. Para ejecutar en local, renombra el archivo `env.example` a `.env` y modifica las variables de usuario y contraseña por:
+   ```env
+   <db_username>=librarymanager
+   <db_password>=librarymanager
+   ```
+   Esto permitirá realizar pruebas en el entorno local con credenciales de prueba.
 4. Ejecuta el proyecto en modo desarrollo:
    ```sh
    npm run dev

@@ -1,21 +1,45 @@
 import "dotenv/config"
 import express from "express"
+import swaggerUi from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
 import cors from "cors"
 import { connect } from "./config/mongo-db-config";
 import userRoutes from "./routes/user-routes";
 import libraryRoutes from "./routes/library-routes";
 
+const PORT = process.env.PORT ?? 4000;
 
 
 
+// Configuración de Swagger
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Library Management API",
+      version: "1.0.0",
+      description: "Documentación de la API para gestión de libros y usuarios",
+    },
+    // servers: [
+    //   {
+    //     url: "http://localhost:"+PORT,
+    //   },
+    // ],
+  },
+  apis: ["./src/routes/*.ts","./src/models/*.ts"],
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
 const app = express()
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
+// Ruta de documentación Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-const PORT = process.env.PORT ?? 4000;
+
 
 // Rutas (convención REST en inglés)
 app.use('/api/users', userRoutes);

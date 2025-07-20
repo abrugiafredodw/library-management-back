@@ -75,6 +75,14 @@ Las rutas principales son:
 - `/api/library` para operaciones de libros.
 - `/api/users` para operaciones de usuarios y autenticación.
 
+## Documentación de la API
+
+La documentación interactiva de la API está disponible mediante Swagger. Una vez iniciado el servidor, accede a:
+
+- [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+Desde esta interfaz puedes explorar y probar los endpoints de la API de forma sencilla.
+
 ## Autor
 
 Proyecto desarrollado por **Ariel Brugafredo** para Darwoft.

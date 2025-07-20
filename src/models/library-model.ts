@@ -1,3 +1,34 @@
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Library:
+ *       type: object
+ *       properties:
+ *         _id:
+ *           type: string
+ *           description: ID único del libro
+ *         nombre:
+ *           type: string
+ *           example: El Principito
+ *         genero:
+ *           type: string
+ *           example: Ficción
+ *         descripcion:
+ *           type: string
+ *           example: Libro clásico de la literatura
+ *         usuario:
+ *           type: string
+ *           description: ID del usuario propietario
+ *         leido:
+ *           type: boolean
+ *           example: false
+ *       required:
+ *         - nombre
+ *         - genero
+ *         - descripcion
+ *         - usuario
+ */
 import mongoose, { Schema, Document, Types } from "mongoose";
 
 export interface ILibrary extends Document {

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET: string = process.env.JWT_SECRET ?? "secret";
+const JWT_EXPIRY: string = process.env.JWT_EXPIRY ?? "86400";
 
 /**
  * Registro de usuario
@@ -49,7 +50,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     const token = jwt.sign(
       { id: usuario._id, email: usuario.email, nombre:usuario.nombre, apellido:usuario.apellido },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: Number(JWT_EXPIRY) }
     );
     return res.status(200).json({ ok: true, token });
   } catch (error) {
